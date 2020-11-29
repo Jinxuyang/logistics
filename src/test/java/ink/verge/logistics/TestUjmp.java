@@ -18,12 +18,24 @@ import java.io.IOException;
 public class TestUjmp {
     public static void main(String[] args) throws IOException {
 
-        MatFileReader reader = new MatFileReader("D:\\Workspace\\Java\\logistics\\src\\main\\resources\\data.mat");
+        MatFileReader reader = new MatFileReader("data.mat");
         MLArray mlArray = reader.getMLArray("bestVC");
         MLCell cell = (MLCell)mlArray;
+
+        System.out.println(cell.getM());
+        System.out.println(cell.getN());
+
         MLDouble mlDouble = (MLDouble) cell.get(0);
+        double[][] doubles = mlDouble.getArray();
+        double[] temp = doubles[0];
+        for (double v : temp) {
+            System.out.println(v);
+        }
+        /*System.out.println(doubles[0].length);
+        System.out.println(doubles[0][1]);
+        *///MLDouble mlDouble = (MLDouble) cell.get(0);
         //System.out.println(cell.contentToString());
-        System.out.println(mlDouble.get(0));
+        //System.out.println(mlDouble.get(0));
         /*double[][] doubleA = mlDouble.getArray();
         System.out.println(doubleA[0][0]);*/
         //System.out.println(cell.get(0));

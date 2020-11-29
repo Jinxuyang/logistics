@@ -29,7 +29,7 @@ public class CodeGenerator {
         gc.setAuthor("Verge");
         gc.setOpen(false); //不打开生产的文件
         gc.setFileOverride(false); //不覆盖之前生成的文件
-        gc.setServiceName("%Service");
+        //gc.setServiceName("%Service");
         gc.setIdType(IdType.AUTO);// 主键策略 自增  注意要和数据库中表实际情况对应
         gc.setDateType(DateType.ONLY_DATE);
         gc.setSwagger2(true);//自动开启swagger2的支持
@@ -57,7 +57,7 @@ public class CodeGenerator {
         StrategyConfig strategy = new StrategyConfig();
         // strategy.setInclude("t_user");
         //可以用同配符号:表示生成t_开头的对应库下所有表
-        strategy.setInclude("tb_path");
+        strategy.setInclude("tb_order");
         //strategy.setInclude("order");
         //strategy.setInclude("road");
         strategy.setNaming(NamingStrategy.underline_to_camel);// 下划线转驼峰

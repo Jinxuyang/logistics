@@ -9,5 +9,5 @@ import lombok.Data;
  */
 @Data
 public class PathNoId {
-    int[] path;
+    double[] path;
 }
