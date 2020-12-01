@@ -1,5 +1,6 @@
 package ink.verge.logistics.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ink.verge.logistics.entity.Order;
@@ -23,5 +24,24 @@ import java.util.List;
  */
 @Service
 public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements ORDERService {
+    @Autowired
+    private OrderMapper orderMapper;
 
+
+    @Override
+    public List<Order> getOrderWhichStatusEqWaiting() {
+        QueryWrapper<Order> wrapper = new QueryWrapper<>();
+        wrapper.eq("status","-1");
+        return orderMapper.selectList(wrapper);
+
+    }
+
+
+    @Override
+    public Order getOrderByWorkId(int id) {
+        QueryWrapper<Order> wrapper = new QueryWrapper<>();
+        wrapper.eq("worker_id",id)
+                .eq("status","0");
+        return orderMapper.selectOne(wrapper);
+    }
 }

@@ -77,6 +77,18 @@ public class OrderController {
         return CommonReturnType.create(resultMap);
     }
 
+    @GetMapping("/getByWorkerId/{id}")
+    @ApiOperation("获取Order通过workerID")
+    public CommonReturnType getOrderNyWorkerId(@PathVariable int id){
+        return CommonReturnType.create(orderService.getOrderByWorkId(id));
+    }
+
+    @GetMapping("/getWaitingOrder")
+    @ApiOperation("获取Order通过workerID")
+    public CommonReturnType getWaitingOrder(){
+        return CommonReturnType.create(orderService.getOrderWhichStatusEqWaiting());
+    }
+
     /*@GetMapping("/get/{keyword}")
     @ApiOperation("获取所有订单")
     public CommonReturnType getAllOrders(@RequestParam(value = "pageNum") int pageNum,

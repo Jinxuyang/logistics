@@ -3,6 +3,8 @@ package ink.verge.logistics.service;
 import ink.verge.logistics.entity.Order;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -13,4 +15,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ORDERService extends IService<Order> {
     //boolean generateOrderByPath();
+
+    Order getOrderByWorkId(int id);
+
+    List<Order> getOrderWhichStatusEqWaiting();
+
 }

@@ -89,6 +89,17 @@ public class PathController {
         return CommonReturnType.create(resultMap);
     }
 
+    @GetMapping("/get/{id}")
+    @ApiOperation("根据id获取路径")
+    public CommonReturnType getPathById(@PathVariable("id") int id) throws JsonProcessingException {
+        Path path = pathService.getById(id);
+        PathVO pathVO = new PathVO();
+        double[] tempDouble = objectMapper.readValue(path.getPath(),double[].class);
+        BeanUtils.copyProperties(path,pathVO);
+        pathVO.setPath(tempDouble);
+        return CommonReturnType.create(pathVO);
+    }
+
     @GetMapping("/get/notgenerate")
     @ApiOperation("获取所有未生成订单的路径")
     public CommonReturnType getNotGeneratePath(){
