@@ -5,6 +5,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import ink.verge.logistics.entity.Car;
 import ink.verge.logistics.service.CARService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,9 @@ import java.util.Map;
  * @Date 2020/12/1 15:32
  * @Version 1.0
  */
+@RestController
+@RequestMapping("/car")
+@Api("Car-Controller")
 public class CarController {
     @Autowired
     private CARService carService;
