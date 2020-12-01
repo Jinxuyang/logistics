@@ -1,5 +1,6 @@
 package ink.verge.logistics.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jmatio.io.MatFileReader;
@@ -19,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * <p>
@@ -73,5 +75,24 @@ public class PathServiceImpl extends ServiceImpl<PathMapper, Path> implements PA
         }
 
         return true;
+    }
+
+    @Override
+    public List<Path> getPathWhichNotGenerateOrder() {
+        QueryWrapper<Path> wrapper = new QueryWrapper<>();
+        wrapper.eq("status",false);
+        return pathMapper.selectList(wrapper);
+    }
+
+    @Override
+    public boolean updatePathStatus(int pathId,boolean status) {
+        Path path = new Path();
+        path.setId(pathId);
+        path.setStatus(status);
+        if (pathMapper.updateById(path) == 1){
+            return true;
+        } else {
+            return false;
+        }
     }
 }

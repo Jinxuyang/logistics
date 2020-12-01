@@ -16,4 +16,8 @@ import java.util.List;
  */
 public interface PATHService extends IService<Path> {
     boolean generatePaths(MultipartFile file);
+
+    List<Path> getPathWhichNotGenerateOrder();
+
+    boolean updatePathStatus(int pathId,boolean status);
 }

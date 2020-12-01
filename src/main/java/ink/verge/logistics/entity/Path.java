@@ -31,6 +31,6 @@ public class Path implements Serializable {
 
     private String path;
 
-    private Integer status;
+    private boolean status;
 
 }
